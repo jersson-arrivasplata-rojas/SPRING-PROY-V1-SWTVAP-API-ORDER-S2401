@@ -16,6 +16,8 @@ public interface OrderMapper {
 
     OrderRequest orderToOrderRequest(Order order);
 
+    OrderResponse orderToOrderResponse(Order order);
+
     List<OrderResponse> mapOrdersToResponses(List<Order> orders);
 
 }

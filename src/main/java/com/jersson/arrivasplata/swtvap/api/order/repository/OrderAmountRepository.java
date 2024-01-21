@@ -9,6 +9,6 @@ public interface OrderAmountRepository extends JpaRepository<OrderAmount,Long> {
     List<OrderAmount> findAll();
     void deleteById(Long id);
 
-    List<OrderAmount> findByOrderName(String orderName);
+    List<OrderAmount> findByOrderCode(String orderCode);
 
 }

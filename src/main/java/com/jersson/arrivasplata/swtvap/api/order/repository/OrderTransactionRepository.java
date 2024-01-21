@@ -9,6 +9,6 @@ public interface OrderTransactionRepository extends JpaRepository<OrderTransacti
     List<OrderTransaction> findAll();
     void deleteById(Long id);
 
-    List<OrderTransaction> findByOrderName(String orderName);
+    List<OrderTransaction> findByOrderCode(String orderCode);
 
 }

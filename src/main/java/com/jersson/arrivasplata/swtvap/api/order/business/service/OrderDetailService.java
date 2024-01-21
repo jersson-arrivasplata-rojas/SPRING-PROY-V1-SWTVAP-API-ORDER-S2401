@@ -13,5 +13,5 @@ public interface OrderDetailService {
 
     Mono<Void> deleteById(Long id);
 
-    Flux<OrderDetail> findByOrderDetailName(String orderDetailName);
+    Flux<OrderDetail> findByOrderCode(String orderCode);
 }

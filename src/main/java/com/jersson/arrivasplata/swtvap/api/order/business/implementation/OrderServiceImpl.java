@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Mono<Order> updateOrder(Long id, Order order) {
+    public Mono<Order> updateOrder( Order order) {
         if (order.getCode() == null || order.getCode().isEmpty()) {
             throw new CustomException("Order name is required.");
         }
@@ -54,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
     public Mono<Void> deleteOrder(Long id) {
         Optional<Order> orderOptional = orderRepository.findById(id);
         if (!orderOptional.isPresent()) {
-            throw new CustomException("Orer not found with id: " + id);
+            throw new CustomException("Order not found with id: " + id);
         }
         Order order = orderOptional.get();
         order.setStatus(Status.INACTIVE);

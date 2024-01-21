@@ -13,5 +13,5 @@ public interface OrderTransactionService {
 
     Mono<Void> deleteById(Long id);
 
-    Flux<OrderTransaction> findByOrderTransactionName(String orderTransactionName);
+    Flux<OrderTransaction> findByOrderCode(String orderCode);
 }

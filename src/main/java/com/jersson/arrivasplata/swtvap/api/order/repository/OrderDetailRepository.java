@@ -8,5 +8,5 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> 
     List<OrderDetail> findAll();
     void deleteById(Long id);
 
-    List<OrderDetail> findByOrderName(String orderName);
+    List<OrderDetail> findByOrderCode(String orderCode);
 }
