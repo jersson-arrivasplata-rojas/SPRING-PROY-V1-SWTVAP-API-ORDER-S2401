@@ -20,7 +20,7 @@ public class Order {
     @Column(name = "code", length = 50)
     private String code;
 
-    @Column(name = "code", length = 50)
+    @Column(name = "other_date", length = 50)
     private String otherDate;
 
     @Enumerated(EnumType.ORDINAL)

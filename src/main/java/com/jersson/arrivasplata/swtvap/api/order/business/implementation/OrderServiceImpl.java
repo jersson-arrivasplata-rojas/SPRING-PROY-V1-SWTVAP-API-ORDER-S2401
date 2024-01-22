@@ -14,7 +14,6 @@ import reactor.core.publisher.Mono;
 import java.util.Optional;
 
 @Service
-
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
 
@@ -51,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Mono<Void> deleteOrder(Long id) {
+    public Mono<Void> deleteOrderById(Long id) {
         Optional<Order> orderOptional = orderRepository.findById(id);
         if (!orderOptional.isPresent()) {
             throw new CustomException("Order not found with id: " + id);
