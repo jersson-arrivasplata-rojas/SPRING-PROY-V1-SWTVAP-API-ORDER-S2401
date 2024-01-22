@@ -50,7 +50,7 @@ public class OrderAmountControllerImpl implements OrderAmountController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> deleteOrderAmount(@PathVariable Long id) {
         return orderAmountService.findById(id)
-                .flatMap(existingProductCategory -> {
+                .flatMap(existingOrderAmount -> {
                     orderAmountService.deleteById(id);
                     return Mono.empty();
                 });
