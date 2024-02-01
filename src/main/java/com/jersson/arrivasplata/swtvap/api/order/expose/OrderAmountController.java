@@ -1,14 +1,18 @@
 package com.jersson.arrivasplata.swtvap.api.order.expose;
 
 import com.jersson.arrivasplata.swtvap.api.order.model.OrderAmount;
+import com.jersson.arrivasplata.swtvap.api.order.model.OrderAmountRequest;
+import com.jersson.arrivasplata.swtvap.api.order.model.OrderAmountResponse;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface OrderAmountController {
-    Mono<OrderAmount> getOrderAmountById(Long id);
+    Flux<OrderAmountResponse> getAllOrderAmount();
+    Mono<OrderAmountResponse> getOrderAmountById(Long id);
 
-    Mono<OrderAmount> createOrderAmount(OrderAmount orderAmount);
+    Mono<OrderAmountResponse> createOrderAmount(OrderAmountRequest orderAmountRequest);
 
-    Mono<OrderAmount> updateOrderAmount(Long id, OrderAmount updatedOrderAmount);
+    Mono<OrderAmountResponse> updateOrderAmount(Long id, OrderAmountRequest orderAmountRequest);
 
     Mono<Void> deleteOrderAmount(Long id);
 }

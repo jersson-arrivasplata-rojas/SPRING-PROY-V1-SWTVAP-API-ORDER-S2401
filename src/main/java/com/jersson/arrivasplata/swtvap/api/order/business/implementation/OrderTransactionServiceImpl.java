@@ -3,9 +3,10 @@ package com.jersson.arrivasplata.swtvap.api.order.business.implementation;
 import com.jersson.arrivasplata.swtvap.api.order.business.service.OrderTransactionService;
 import com.jersson.arrivasplata.swtvap.api.order.model.OrderTransaction;
 import com.jersson.arrivasplata.swtvap.api.order.repository.OrderTransactionRepository;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+@Service
 public class OrderTransactionServiceImpl implements OrderTransactionService {
     private final OrderTransactionRepository orderTransactionRepository;
 

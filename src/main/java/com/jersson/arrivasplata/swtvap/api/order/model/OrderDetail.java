@@ -13,6 +13,8 @@ import java.util.Set;
 @Table(name = "swtvap_orders_details")
 public class OrderDetail {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long orderDetailId;
 
@@ -43,9 +45,13 @@ public class OrderDetail {
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Order order;
-
-    @OneToMany(mappedBy = "product_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+/*
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Product> product;
+*/
+    @OneToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Product Product;
 
 }

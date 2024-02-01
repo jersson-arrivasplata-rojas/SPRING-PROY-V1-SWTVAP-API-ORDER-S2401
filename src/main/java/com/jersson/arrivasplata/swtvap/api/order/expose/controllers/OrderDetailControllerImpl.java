@@ -2,7 +2,10 @@ package com.jersson.arrivasplata.swtvap.api.order.expose.controllers;
 
 import com.jersson.arrivasplata.swtvap.api.order.business.service.OrderDetailService;
 import com.jersson.arrivasplata.swtvap.api.order.expose.OrderDetailController;
+import com.jersson.arrivasplata.swtvap.api.order.mapper.OrderDetailMapper;
 import com.jersson.arrivasplata.swtvap.api.order.model.OrderDetail;
+import com.jersson.arrivasplata.swtvap.api.order.model.OrderDetailRequest;
+import com.jersson.arrivasplata.swtvap.api.order.model.OrderDetailResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -12,41 +15,58 @@ import reactor.core.publisher.Mono;
 @RequestMapping(value = "/api/order-details", produces = "application/vnd.swtvap-api-order-details.v1+json")
 public class OrderDetailControllerImpl implements OrderDetailController {
     private final OrderDetailService orderDetailService;
+    private final OrderDetailMapper orderDetailMapper;
 
-    public OrderDetailControllerImpl(OrderDetailService orderDetailService) {
+    public OrderDetailControllerImpl(OrderDetailService orderDetailService, OrderDetailMapper orderDetailMapper) {
         this.orderDetailService = orderDetailService;
+        this.orderDetailMapper = orderDetailMapper;
     }
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Flux<OrderDetail> getAllOrderDetail() {
-        return orderDetailService.findAll();
+    public Flux<OrderDetailResponse> getAllOrderDetail() {
+        return orderDetailService.findAll()
+                .map(orderDetail -> {
+                    OrderDetailResponse orderDetailResponse = orderDetailMapper.orderDetailToOrderDetailResponse(orderDetail);
+                    return orderDetailResponse;
+                });
     }
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<OrderDetail> getOrderDetailById(@PathVariable Long id) {
+    public Mono<OrderDetailResponse> getOrderDetailById(@PathVariable Long id) {
         return orderDetailService.findById(id)
-                .map(orderDetail -> orderDetail);
+                .map(orderDetail -> {
+                    OrderDetailResponse orderDetailResponse = orderDetailMapper.orderDetailToOrderDetailResponse(orderDetail);
+                    return orderDetailResponse;
+                });
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail) {
+    public Mono<OrderDetailResponse> createOrderDetail(@RequestBody OrderDetailRequest orderDetailRequest) {
+        OrderDetail orderDetail = orderDetailMapper.orderDetailRequestToOrderDetail(orderDetailRequest);
+
         return orderDetailService.save(orderDetail)
-                .map(newOrderDetail -> newOrderDetail);
+                .map(newOrderDetail -> {
+                    OrderDetailResponse orderDetailResponse = orderDetailMapper.orderDetailToOrderDetailResponse(newOrderDetail);
+                    return orderDetailResponse;
+                });
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<OrderDetail> updateOrderDetail(@PathVariable Long id,@RequestBody OrderDetail updatedOrderDetail) {
-        return orderDetailService.findById(id)
-                .flatMap(existingOrderDetail -> {
-                    updatedOrderDetail.setOrderId(id);
-                    return orderDetailService.save(updatedOrderDetail);
-                })
-                .map(updated -> updated);
+    public Mono<OrderDetailResponse> updateOrderDetail(@PathVariable Long id,@RequestBody OrderDetailRequest updatedOrderDetailRequest) {
+        OrderDetail orderDetail = orderDetailMapper.orderDetailRequestToOrderDetail(updatedOrderDetailRequest);
+        orderDetail.setOrderDetailId(id);
+
+        return orderDetailService.updateOrderDetail(orderDetail)
+                .map(updateOrderDetail->{
+                    OrderDetailResponse orderDetailResponse = orderDetailMapper.orderDetailToOrderDetailResponse(updateOrderDetail);
+                    return orderDetailResponse;
+                });
     }
 
-    @Override
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> deleteOrderDetail(Long id) {
         return orderDetailService.findById(id)
                 .flatMap(existingOrderDetail -> {

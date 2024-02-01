@@ -2,9 +2,12 @@ package com.jersson.arrivasplata.swtvap.api.order.model;
 
 import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
-
+@Data
+@Entity
+@Table(name = "swtvap_products")
 public class Product {
 
     @Id
@@ -38,4 +41,10 @@ public class Product {
 
     @Enumerated(EnumType.ORDINAL)
     private Status status;
+/*
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private OrderDetail orderDetail;
+*/
+
 }

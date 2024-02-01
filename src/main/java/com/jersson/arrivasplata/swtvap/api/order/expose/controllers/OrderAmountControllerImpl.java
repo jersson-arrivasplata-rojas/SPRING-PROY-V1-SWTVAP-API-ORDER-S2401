@@ -1,8 +1,10 @@
 package com.jersson.arrivasplata.swtvap.api.order.expose.controllers;
-
 import com.jersson.arrivasplata.swtvap.api.order.business.service.OrderAmountService;
 import com.jersson.arrivasplata.swtvap.api.order.expose.OrderAmountController;
+import com.jersson.arrivasplata.swtvap.api.order.mapper.OrderAmountMapper;
 import com.jersson.arrivasplata.swtvap.api.order.model.OrderAmount;
+import com.jersson.arrivasplata.swtvap.api.order.model.OrderAmountRequest;
+import com.jersson.arrivasplata.swtvap.api.order.model.OrderAmountResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -12,46 +14,61 @@ import reactor.core.publisher.Mono;
 @RequestMapping(value = "/api/order-amounts", produces = "application/vnd.swtvap-api-order-amounts.v1+json")
 public class OrderAmountControllerImpl implements OrderAmountController {
     private final OrderAmountService orderAmountService;
+    private final OrderAmountMapper orderAmountMapper;
 
-    public OrderAmountControllerImpl(OrderAmountService orderAmountService) {
+    public OrderAmountControllerImpl(OrderAmountService orderAmountService, OrderAmountMapper orderAmountMapper) {
         this.orderAmountService = orderAmountService;
+        this.orderAmountMapper = orderAmountMapper;
     }
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Flux<OrderAmount> getAllOrderAmount() {
-        return orderAmountService.findAll();
+    public Flux<OrderAmountResponse> getAllOrderAmount() {
+        return orderAmountService.getAllOrderAmount()
+                .map(orderAmount -> {
+            OrderAmountResponse orderAmountResponse = orderAmountMapper.orderAmountToOrderAmountResponse(orderAmount);
+            return orderAmountResponse;
+        });
     }
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<OrderAmount> getOrderAmountById(@PathVariable Long id) {
-        return orderAmountService.findById(id)
-                .map(orderAmount -> orderAmount);
+    public Mono<OrderAmountResponse> getOrderAmountById(@PathVariable Long id) {
+        return orderAmountService.getOrderAmountById(id)
+                .map(orderAmount -> {
+                    OrderAmountResponse orderAmountResponse = orderAmountMapper.orderAmountToOrderAmountResponse(orderAmount);
+                    return orderAmountResponse;
+                });
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<OrderAmount> createOrderAmount(@RequestBody OrderAmount orderAmount) {
-        return orderAmountService.save(orderAmount)
-                .map(newOrderCategory -> newOrderCategory);
+    public Mono<OrderAmountResponse> createOrderAmount(@RequestBody OrderAmountRequest orderAmountRequest) {
+        OrderAmount orderAmount = orderAmountMapper.orderAmountRequestToOrderAmount(orderAmountRequest);
+
+        return orderAmountService.createOrderAmount(orderAmount)
+                .map(newOrderAmount -> {
+                    OrderAmountResponse orderAmountResponse = orderAmountMapper.orderAmountToOrderAmountResponse(newOrderAmount);
+                    return orderAmountResponse;
+                });
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<OrderAmount> updateOrderAmount(@PathVariable Long id,@RequestBody OrderAmount updatedOrderAmount) {
-        return orderAmountService.findById(id)
-                .flatMap(existingOrderAmount -> {
-                    updatedOrderAmount.setOrderId(id);
-                    return orderAmountService.save(updatedOrderAmount);
-                })
-                .map(updated -> updated);
+    public Mono<OrderAmountResponse> updateOrderAmount(@PathVariable Long id,@RequestBody OrderAmountRequest orderAmountRequest) {
+        OrderAmount orderAmount = orderAmountMapper.orderAmountRequestToOrderAmount(orderAmountRequest);
+        orderAmount.setOrderAmountId(id);
+        return orderAmountService.updateOrderAmount(orderAmount)
+                .map(updatedOrderAmount -> {
+                    OrderAmountResponse orderAmountResponse = orderAmountMapper.orderAmountToOrderAmountResponse(updatedOrderAmount);
+                    return orderAmountResponse;
+                });
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> deleteOrderAmount(@PathVariable Long id) {
-        return orderAmountService.findById(id)
+        return orderAmountService.getOrderAmountById(id)
                 .flatMap(existingOrderAmount -> {
-                    orderAmountService.deleteById(id);
+                    orderAmountService.deleteOrderAmount(id);
                     return Mono.empty();
                 });
     }

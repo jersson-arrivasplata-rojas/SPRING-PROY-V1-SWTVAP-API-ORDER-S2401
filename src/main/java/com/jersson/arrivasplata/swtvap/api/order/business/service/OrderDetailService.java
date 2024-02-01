@@ -11,6 +11,8 @@ public interface OrderDetailService {
 
     Mono<OrderDetail> save(OrderDetail orderDetail);
 
+    Mono<OrderDetail> updateOrderDetail(OrderDetail orderDetail);
+
     Mono<Void> deleteById(Long id);
 
     Flux<OrderDetail> findByOrderCode(String orderCode);

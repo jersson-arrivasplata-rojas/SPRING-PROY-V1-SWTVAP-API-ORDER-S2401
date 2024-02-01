@@ -5,13 +5,15 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface OrderAmountService {
-    Flux<OrderAmount> findAll();
+    Flux<OrderAmount> getAllOrderAmount();
 
-    Mono<OrderAmount> findById(Long id);
+    Mono<OrderAmount> getOrderAmountById(Long id);
 
-    Mono<OrderAmount> save(OrderAmount orderAmount);
+    Mono<OrderAmount> createOrderAmount(OrderAmount orderAmount);
 
-    Mono<Void> deleteById(Long id);
+    Mono<OrderAmount> updateOrderAmount( OrderAmount orderAmount);
+
+    Mono<Void> deleteOrderAmount(Long id);
 
     Flux<OrderAmount> findByOrderCode(String orderCode);
 }

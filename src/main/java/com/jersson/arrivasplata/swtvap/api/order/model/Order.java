@@ -1,9 +1,11 @@
 package com.jersson.arrivasplata.swtvap.api.order.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @Entity
@@ -47,13 +49,11 @@ public class Order {
     @Column(columnDefinition = "TEXT")
     private String otherDetails;
 
-    //Relación con Client    OrderClient /OrderTransaction  /orderDetails /orderProducts
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Client client;
-/*
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<OrderTransaction> orderTransactions;
-*/
+    private Set<OrderAmount> orderAmount;
 }

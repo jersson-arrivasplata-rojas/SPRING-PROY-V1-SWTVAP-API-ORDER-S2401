@@ -2,7 +2,11 @@ package com.jersson.arrivasplata.swtvap.api.order.model;
 
 import com.jersson.arrivasplata.swtvap.api.order.enums.SourceAggregate;
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
+@Entity
+@Table(name = "swtvap_clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
