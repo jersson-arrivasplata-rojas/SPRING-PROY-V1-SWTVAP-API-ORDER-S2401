@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(value = "/api/order-details", produces = "application/vnd.swtvap-api-order-details.v1+json")
+@RequestMapping(value = "/api/orders-details", produces = "application/vnd.swtvap-api-orders-details.v1+json")
 public class OrderDetailControllerImpl implements OrderDetailController {
     private final OrderDetailService orderDetailService;
     private final OrderDetailMapper orderDetailMapper;
@@ -67,7 +67,7 @@ public class OrderDetailControllerImpl implements OrderDetailController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Mono<Void> deleteOrderDetail(Long id) {
+    public Mono<Void> deleteOrderDetail(@PathVariable Long id) {
         return orderDetailService.findById(id)
                 .flatMap(existingOrderDetail -> {
                     orderDetailService.deleteById(id);

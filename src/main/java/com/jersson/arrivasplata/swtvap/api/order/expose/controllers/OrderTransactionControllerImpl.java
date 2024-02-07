@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(value = "/api/order-transactions", produces = "application/vnd.swtvap-api-order-transactions.v1+json")
+@RequestMapping(value = "/api/orders-transactions", produces = "application/vnd.swtvap-api-orders-transactions.v1+json")
 public class OrderTransactionControllerImpl implements OrderTransactionController {
     private final OrderTransactionService orderTransactionService;
     private final OrderTransactionMapper orderTransactionMapper;
