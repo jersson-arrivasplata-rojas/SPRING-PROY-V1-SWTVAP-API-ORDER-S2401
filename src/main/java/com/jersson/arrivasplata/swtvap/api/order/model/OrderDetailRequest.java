@@ -11,7 +11,11 @@ public class OrderDetailRequest {
     private Long productId;
     private Long quantity;
     private BigDecimal unitPrice;
+    private BigDecimal unitPriceUSD;
+    private BigDecimal unitPriceEUR;
     private BigDecimal subtotal;
+    private BigDecimal subtotalUSD;
+    private BigDecimal subtotalEUR;
     private Long discountPercentage;
     private String otherDetails;
     private Status status;

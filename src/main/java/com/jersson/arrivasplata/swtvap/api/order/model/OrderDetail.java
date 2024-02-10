@@ -30,8 +30,20 @@ public class OrderDetail {
     @Column(name = "unit_price", precision = 10, scale = 2)
     private BigDecimal unitPrice;
 
+    @Column(name = "unit_priceUSD", precision = 10, scale = 2)
+    private BigDecimal unitPriceUSD;
+
+    @Column(name = "unit_priceEUR", precision = 10, scale = 2)
+    private BigDecimal unitPriceEUR;
+
     @Column(name = "subtotal", precision = 10, scale = 2)
     private BigDecimal subtotal;
+
+    @Column(name = "subtotalUSD", precision = 10, scale = 2)
+    private BigDecimal subtotalUSD;
+
+    @Column(name = "subtotalEUR", precision = 10, scale = 2)
+    private BigDecimal subtotalEUR;
 
     @Column(name = "discount_percentage")
     private Long discountPercentage;

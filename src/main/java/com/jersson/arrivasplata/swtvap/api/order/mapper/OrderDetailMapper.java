@@ -18,22 +18,31 @@ public interface OrderDetailMapper {
     @Mapping(source = "productId", target = "productId")
     @Mapping(source = "quantity", target = "quantity")
     @Mapping(source = "unitPrice", target = "unitPrice")
+    @Mapping(source = "unitPriceUSD", target = "unitPriceUSD")
+    @Mapping(source = "unitPriceEUR", target = "unitPriceEUR")
     @Mapping(source = "subtotal", target = "subtotal")
+    @Mapping(source = "subtotalUSD", target = "subtotalUSD")
+    @Mapping(source = "subtotalEUR", target = "subtotalEUR")
     @Mapping(source = "discountPercentage", target = "discountPercentage")
     @Mapping(source = "otherDetails", target = "otherDetails")
     @Mapping(source = "status", target = "status")
     OrderDetail orderDetailRequestToOrderDetail(OrderDetailRequest orderDetailRequest);
+
+    OrderDetailRequest orderDetailToOrderDetailRequest(OrderDetail orderDetail);
+
     @Mapping(source = "orderDetailId", target = "orderDetailId")
     @Mapping(source = "orderId", target = "orderId")
     @Mapping(source = "productId", target = "productId")
     @Mapping(source = "quantity", target = "quantity")
     @Mapping(source = "unitPrice", target = "unitPrice")
+    @Mapping(source = "unitPriceUSD", target = "unitPriceUSD")
+    @Mapping(source = "unitPriceEUR", target = "unitPriceEUR")
     @Mapping(source = "subtotal", target = "subtotal")
+    @Mapping(source = "subtotalUSD", target = "subtotalUSD")
+    @Mapping(source = "subtotalEUR", target = "subtotalEUR")
     @Mapping(source = "discountPercentage", target = "discountPercentage")
     @Mapping(source = "otherDetails", target = "otherDetails")
     @Mapping(source = "status", target = "status")
-    OrderDetailRequest orderDetailToOrderDetailRequest(OrderDetail orderDetail);
-
     OrderDetailResponse orderDetailToOrderDetailResponse(OrderDetail orderDetail);
 
     List<OrderDetailResponse> mapOrderDetailsToResponses(List<OrderDetail> orderDetails);

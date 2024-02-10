@@ -9,5 +9,6 @@ public class OrderTransactionResponse {
     private Long orderId;
     private String paymentMethod;
     private String amount;
+    private String typeCurrency;
     private LocalDate transactionDate;
 }

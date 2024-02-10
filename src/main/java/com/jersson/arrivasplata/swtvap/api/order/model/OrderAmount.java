@@ -23,6 +23,12 @@ public class OrderAmount {
     @Column(name = "amount", precision = 10, scale = 2)
     private BigDecimal amount;
 
+    @Column(name = "amountUSD", precision = 10, scale = 2)
+    private BigDecimal amountUSD;
+
+    @Column(name = "amountEUR", precision = 10, scale = 2)
+    private BigDecimal amountEUR;
+
     @Column(columnDefinition = "TEXT")
     private String otherDetails;
 

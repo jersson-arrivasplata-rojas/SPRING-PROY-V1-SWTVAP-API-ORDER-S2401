@@ -10,5 +10,6 @@ public class OrderTransactionRequest {
     private Long orderId;
     private String paymentMethod;
     private String amount;
+    private String typeCurrency;
     private LocalDate transactionDate;
 }

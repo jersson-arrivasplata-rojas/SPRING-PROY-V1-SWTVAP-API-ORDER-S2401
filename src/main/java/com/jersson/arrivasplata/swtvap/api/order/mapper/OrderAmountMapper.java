@@ -18,6 +18,8 @@ public interface OrderAmountMapper {
     @Mapping(source = "orderId", target = "orderId")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "amount", target = "amount")
+    @Mapping(source = "amountUSD", target = "amountUSD")
+    @Mapping(source = "amountEUR", target = "amountEUR")
     @Mapping(source = "otherDetails", target = "otherDetails")
     OrderAmount orderAmountRequestToOrderAmount(OrderAmountRequest orderAmountRequest);
     OrderAmountRequest orderAmountToOrderAmountRequest(OrderAmount orderAmount);
@@ -25,6 +27,8 @@ public interface OrderAmountMapper {
     @Mapping(source = "orderId", target = "orderId")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "amount", target = "amount")
+    @Mapping(source = "amountUSD", target = "amountUSD")
+    @Mapping(source = "amountEUR", target = "amountEUR")
     @Mapping(source = "otherDetails", target = "otherDetails")
     OrderAmountResponse orderAmountToOrderAmountResponse(OrderAmount orderAmount);
 

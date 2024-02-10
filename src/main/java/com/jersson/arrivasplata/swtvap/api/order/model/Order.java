@@ -34,14 +34,32 @@ public class Order {
     @Column(name = "subtotal", precision = 10, scale = 2)
     private BigDecimal subtotal;
 
+    @Column(name = "subtotalUSD", precision = 10, scale = 2)
+    private BigDecimal subtotalUSD;
+
+    @Column(name = "subtotalEUR", precision = 10, scale = 2)
+    private BigDecimal subtotalEUR;
+
     @Column(name = "taxes", precision = 10, scale = 2)
     private BigDecimal taxes;
+
+    @Column(name = "taxesUSD", precision = 10, scale = 2)
+    private BigDecimal taxesUSD;
+
+    @Column(name = "taxesEUR", precision = 10, scale = 2)
+    private BigDecimal taxesEUR;
 
     @Column(name = "discount_amount", precision = 10, scale = 2)
     private BigDecimal discountAmount;
 
     @Column(name = "total", precision = 10, scale = 2)
     private BigDecimal total;
+
+    @Column(name = "totalUSD", precision = 10, scale = 2)
+    private BigDecimal totalUSD;
+
+    @Column(name = "totalEUR", precision = 10, scale = 2)
+    private BigDecimal totalEUR;
 
     @Column(name = "pick_up")
     private Boolean pickUp;

@@ -12,5 +12,7 @@ public class OrderAmountResponse {
     private Long orderId;
     private String name;
     private BigDecimal amount;
+    private BigDecimal amountUSD;
+    private BigDecimal amountEUR;
     private String otherDetails;
 }

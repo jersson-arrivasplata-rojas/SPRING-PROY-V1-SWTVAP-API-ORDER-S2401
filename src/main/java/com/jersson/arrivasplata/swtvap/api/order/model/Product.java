@@ -30,6 +30,12 @@ public class Product {
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 
+    @Column(name = "priceUSD", precision = 10, scale = 2)
+    private BigDecimal priceUSD;
+
+    @Column(name = "priceEUR", precision = 10, scale = 2)
+    private BigDecimal priceEUR;
+
     @Column(name = "stock")
     private Long stock;
 

@@ -12,6 +12,8 @@ public class OrderAmountRequest {
     private Long orderId;
     private String name;
     private BigDecimal amount;
+    private BigDecimal amountUSD;
+    private BigDecimal amountEUR;
     private String otherDetails;
 
 }

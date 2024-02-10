@@ -23,6 +23,9 @@ public class OrderTransaction {
     @Column(name = "amount", length = 50)
     private String amount;
 
+    @Column(name = "type_currency", length = 10)
+    private String typeCurrency;
+
     @Column(name = "transaction_date")
     private LocalDate transactionDate;
 
