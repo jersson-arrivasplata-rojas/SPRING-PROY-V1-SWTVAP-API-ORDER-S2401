@@ -23,6 +23,12 @@ public class OrderControllerImpl implements OrderController {
         this.orderMapper = orderMapper;
     }
 
+    @GetMapping("/order-summary")
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<Object> getOrderSummary() {
+        return orderService.getOrderSummary();
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public Flux<OrderResponse> getAllOrders() {

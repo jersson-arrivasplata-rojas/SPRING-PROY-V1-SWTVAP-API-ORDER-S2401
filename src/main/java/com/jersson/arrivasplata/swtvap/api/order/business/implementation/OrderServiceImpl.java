@@ -22,6 +22,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Flux<Object> getOrderSummary() {
+        //return query.getResultList();
+
+        return Flux.fromIterable(orderRepository.getOrderSummary());
+    }
+
+    @Override
     public Flux<Order> getAllOrders() {
         return Flux.fromIterable(orderRepository.findAll());
     }

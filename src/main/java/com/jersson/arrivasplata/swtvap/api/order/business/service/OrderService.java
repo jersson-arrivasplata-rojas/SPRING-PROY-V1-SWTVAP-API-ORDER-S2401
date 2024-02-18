@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface OrderService {
+    Flux<Object> getOrderSummary();
     Flux<Order> getAllOrders();
     Mono<Order> getOrderById(Long id);
     Mono<Order> createOrder(Order order);
