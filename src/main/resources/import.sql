@@ -11,9 +11,9 @@ INSERT INTO "public"."swtvap_products" (id, category_id, code, name, description
 INSERT INTO "public"."swtvap_products" (id, category_id, code, name, description, price, stock, stock_min, status) VALUES (7, 1, 'PRODUCT-A00007', 'Madera de Cerezo', 'Madera de Cerezo', 6000, 100, 10, 1);
 
 
-INSERT INTO "public"."swtvap_orders" (id,client_id,code,other_date,status,address,subtotal,taxes,discount_amount,total,pick_up) VALUES (1,1,'ORDER-00000001','06-01-2023 17:00:54',1,'Av. los heroes 1203 , SJM',100.39,10.2,5.10,110.80,true);
-INSERT INTO "public"."swtvap_orders" (id,client_id,code,other_date,status,address,subtotal,taxes,discount_amount,total,pick_up) VALUES (2,2,'ORDER-00000002','06-01-2023 17:00:54',1,'Av. los cedros 1123 , SPM',100.39,10.2,5.10,110.80,false);
-INSERT INTO "public"."swtvap_orders" (id,client_id,code,other_date,status,address,subtotal,taxes,discount_amount,total,pick_up) VALUES (3,3,'ORDER-00000003','06-01-2023 17:00:54',1,'Av. los pinares 3321, SJL',100.39,10.2,5.10,110.80,true);
+INSERT INTO "public"."swtvap_orders" (id,client_id,code,order_date,status,address,subtotal,taxes,discount_amount,total,pick_up) VALUES (1,1,'ORDER-00000001','06-01-2023 17:00:54',1,'Av. los heroes 1203 , SJM',100.39,10.2,5.10,110.80,true);
+INSERT INTO "public"."swtvap_orders" (id,client_id,code,order_date,status,address,subtotal,taxes,discount_amount,total,pick_up) VALUES (2,2,'ORDER-00000002','06-01-2023 17:00:54',1,'Av. los cedros 1123 , SPM',100.39,10.2,5.10,110.80,false);
+INSERT INTO "public"."swtvap_orders" (id,client_id,code,order_date,status,address,subtotal,taxes,discount_amount,total,pick_up) VALUES (3,3,'ORDER-00000003','06-01-2023 17:00:54',1,'Av. los pinares 3321, SJL',100.39,10.2,5.10,110.80,true);
 
 
 INSERT INTO "public"."swtvap_orders_amounts" (id,order_id,name,amount) VALUES (1,1, 'ORDERAMOUNTEST',100.40);

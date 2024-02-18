@@ -10,7 +10,7 @@ public class OrderRequest {
     private Long orderId;
     private Long clientId;
     private String code;
-    private String otherDate;
+    private String orderDate;
     private Status status;
     private String address;
     private BigDecimal subtotal;

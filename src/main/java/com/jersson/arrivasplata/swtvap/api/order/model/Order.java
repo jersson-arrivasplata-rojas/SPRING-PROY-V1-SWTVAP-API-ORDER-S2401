@@ -22,8 +22,8 @@ public class Order {
     @Column(name = "code", length = 50)
     private String code;
 
-    @Column(name = "other_date", length = 50)
-    private String otherDate;
+    @Column(name = "order_date", length = 50)
+    private String orderDate;
 
     @Enumerated(EnumType.ORDINAL)
     private Status status;
