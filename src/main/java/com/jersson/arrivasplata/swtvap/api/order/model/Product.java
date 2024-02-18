@@ -27,13 +27,13 @@ public class Product {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "price", precision = 10, scale = 2)
+    @Column(name = "price", precision = 50, scale = 10)
     private BigDecimal price;
 
-    @Column(name = "priceUSD", precision = 10, scale = 2)
+    @Column(name = "priceUSD", precision = 50, scale = 10)
     private BigDecimal priceUSD;
 
-    @Column(name = "priceEUR", precision = 10, scale = 2)
+    @Column(name = "priceEUR", precision = 50, scale = 10)
     private BigDecimal priceEUR;
 
     @Column(name = "stock")

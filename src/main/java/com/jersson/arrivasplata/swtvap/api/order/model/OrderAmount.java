@@ -20,13 +20,13 @@ public class OrderAmount {
     @Column(length = 50)
     private String name;
 
-    @Column(name = "amount", precision = 10, scale = 2)
+    @Column(name = "amount", precision = 50, scale = 10)
     private BigDecimal amount;
 
-    @Column(name = "amountUSD", precision = 10, scale = 2)
+    @Column(name = "amountUSD", precision = 50, scale = 10)
     private BigDecimal amountUSD;
 
-    @Column(name = "amountEUR", precision = 10, scale = 2)
+    @Column(name = "amountEUR", precision = 50, scale = 10)
     private BigDecimal amountEUR;
 
     @Column(columnDefinition = "TEXT")

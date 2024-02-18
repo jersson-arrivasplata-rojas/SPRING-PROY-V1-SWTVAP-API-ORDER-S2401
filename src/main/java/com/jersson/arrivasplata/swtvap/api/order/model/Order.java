@@ -31,34 +31,34 @@ public class Order {
     @Column(name = "address", length = 250)
     private String address;
 
-    @Column(name = "subtotal", precision = 10, scale = 2)
+    @Column(name = "subtotal", precision = 50, scale = 10)
     private BigDecimal subtotal;
 
-    @Column(name = "subtotalUSD", precision = 10, scale = 2)
+    @Column(name = "subtotalUSD", precision = 50, scale = 10)
     private BigDecimal subtotalUSD;
 
-    @Column(name = "subtotalEUR", precision = 10, scale = 2)
+    @Column(name = "subtotalEUR", precision = 50, scale = 10)
     private BigDecimal subtotalEUR;
 
-    @Column(name = "taxes", precision = 10, scale = 2)
+    @Column(name = "taxes", precision = 50, scale = 10)
     private BigDecimal taxes;
 
-    @Column(name = "taxesUSD", precision = 10, scale = 2)
+    @Column(name = "taxesUSD", precision = 50, scale = 10)
     private BigDecimal taxesUSD;
 
-    @Column(name = "taxesEUR", precision = 10, scale = 2)
+    @Column(name = "taxesEUR", precision = 50, scale = 10)
     private BigDecimal taxesEUR;
 
-    @Column(name = "discount_amount", precision = 10, scale = 2)
+    @Column(name = "discount_amount", precision = 50, scale = 10)
     private BigDecimal discountAmount;
 
-    @Column(name = "total", precision = 10, scale = 2)
+    @Column(name = "total", precision = 50, scale = 10)
     private BigDecimal total;
 
-    @Column(name = "totalUSD", precision = 10, scale = 2)
+    @Column(name = "totalUSD", precision = 50, scale = 10)
     private BigDecimal totalUSD;
 
-    @Column(name = "totalEUR", precision = 10, scale = 2)
+    @Column(name = "totalEUR", precision = 50, scale = 10)
     private BigDecimal totalEUR;
 
     @Column(name = "pick_up")

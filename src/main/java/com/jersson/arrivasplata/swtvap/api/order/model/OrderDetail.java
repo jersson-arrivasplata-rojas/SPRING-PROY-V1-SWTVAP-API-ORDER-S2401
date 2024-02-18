@@ -27,22 +27,22 @@ public class OrderDetail {
     @Column(name = "quantity")
     private Long quantity;
 
-    @Column(name = "unit_price", precision = 10, scale = 2)
+    @Column(name = "unit_price", precision = 50, scale = 10)
     private BigDecimal unitPrice;
 
-    @Column(name = "unit_priceUSD", precision = 10, scale = 2)
+    @Column(name = "unit_priceUSD", precision = 50, scale = 10)
     private BigDecimal unitPriceUSD;
 
-    @Column(name = "unit_priceEUR", precision = 10, scale = 2)
+    @Column(name = "unit_priceEUR", precision = 50, scale = 10)
     private BigDecimal unitPriceEUR;
 
-    @Column(name = "subtotal", precision = 10, scale = 2)
+    @Column(name = "subtotal", precision = 50, scale = 10)
     private BigDecimal subtotal;
 
-    @Column(name = "subtotalUSD", precision = 10, scale = 2)
+    @Column(name = "subtotalUSD", precision = 50, scale = 10)
     private BigDecimal subtotalUSD;
 
-    @Column(name = "subtotalEUR", precision = 10, scale = 2)
+    @Column(name = "subtotalEUR", precision = 50, scale = 10)
     private BigDecimal subtotalEUR;
 
     @Column(name = "discount_percentage")

@@ -59,7 +59,7 @@ public class OrderTransactionControllerImpl implements OrderTransactionControlle
         OrderTransaction orderTransaction = orderTransactionMapper.orderTransactionRequestToOrderTransaction(orderTransactionRequest);
         orderTransaction.setOrderTransactionId(id);
 
-        return orderTransactionService.findById(id)
+        return orderTransactionService.save(orderTransaction)
                 .map(updatedOrderTransaction -> {
                     OrderTransactionResponse orderTransactionResponse = orderTransactionMapper.orderTransactionToOrderTransactionResponse(updatedOrderTransaction);
                     return orderTransactionResponse;

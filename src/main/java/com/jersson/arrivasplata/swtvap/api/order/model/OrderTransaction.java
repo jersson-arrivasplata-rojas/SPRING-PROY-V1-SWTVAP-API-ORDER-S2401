@@ -3,6 +3,7 @@ package com.jersson.arrivasplata.swtvap.api.order.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -20,8 +21,8 @@ public class OrderTransaction {
     @Column(name = "payment_method", length = 50)
     private String paymentMethod;
 
-    @Column(name = "amount", length = 50)
-    private String amount;
+    @Column(name = "amount", precision = 50, scale = 10)
+    private BigDecimal amount;
 
     @Column(name = "type_currency", length = 10)
     private String typeCurrency;
