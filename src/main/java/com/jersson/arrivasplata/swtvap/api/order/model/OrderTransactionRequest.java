@@ -13,4 +13,5 @@ public class OrderTransactionRequest {
     private BigDecimal amount;
     private String typeCurrency;
     private LocalDate transactionDate;
+    private LocalDate deletedAt;
 }

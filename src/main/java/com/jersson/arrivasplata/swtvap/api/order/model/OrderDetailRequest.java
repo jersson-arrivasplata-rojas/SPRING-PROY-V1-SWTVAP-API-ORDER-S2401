@@ -3,6 +3,7 @@ import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 public class OrderDetailRequest {
@@ -19,6 +20,7 @@ public class OrderDetailRequest {
     private Long discountPercentage;
     private String otherDetails;
     private Status status;
+    private LocalDate deletedAt;
     private Order order;
     private Product Product;
 }

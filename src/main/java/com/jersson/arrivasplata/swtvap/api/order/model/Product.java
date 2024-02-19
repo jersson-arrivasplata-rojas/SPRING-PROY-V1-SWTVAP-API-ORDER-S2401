@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "swtvap_products")
@@ -47,6 +49,9 @@ public class Product {
 
     @Enumerated(EnumType.ORDINAL)
     private Status status;
+
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
 /*
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id", insertable = false, updatable = false)

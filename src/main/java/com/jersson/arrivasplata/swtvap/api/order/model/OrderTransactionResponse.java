@@ -12,4 +12,5 @@ public class OrderTransactionResponse {
     private BigDecimal amount;
     private String typeCurrency;
     private LocalDate transactionDate;
+    private LocalDate deletedAt;
 }

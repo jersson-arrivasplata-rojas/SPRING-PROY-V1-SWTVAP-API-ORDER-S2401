@@ -30,6 +30,9 @@ public class OrderTransaction {
     @Column(name = "transaction_date")
     private LocalDate transactionDate;
 
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
+
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Order order;

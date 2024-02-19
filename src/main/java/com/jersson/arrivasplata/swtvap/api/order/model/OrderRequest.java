@@ -4,6 +4,7 @@ import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 public class OrderRequest {
@@ -25,4 +26,5 @@ public class OrderRequest {
     private BigDecimal totalEUR;
     private Boolean pickUp;
     private String otherDetails;
+    private LocalDate deletedAt;
 }

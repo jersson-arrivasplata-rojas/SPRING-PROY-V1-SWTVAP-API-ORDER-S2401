@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -66,6 +67,9 @@ public class Order {
 
     @Column(columnDefinition = "TEXT")
     private String otherDetails;
+
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", insertable = false, updatable = false)

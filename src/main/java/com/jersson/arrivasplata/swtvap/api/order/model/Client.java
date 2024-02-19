@@ -4,6 +4,8 @@ import com.jersson.arrivasplata.swtvap.api.order.enums.SourceAggregate;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "swtvap_clients")
@@ -42,4 +44,7 @@ public class Client {
 
     @Enumerated(EnumType.ORDINAL)
     private SourceAggregate sourceAggregate;
+
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
 }
