@@ -1,6 +1,6 @@
 package com.jersson.arrivasplata.swtvap.api.order.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
+import com.jersson.arrivasplata.swtvap.api.order.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -27,7 +27,7 @@ public class Order {
     private String orderDate;
 
     @Enumerated(EnumType.ORDINAL)
-    private Status status;
+    private OrderStatus status;
 
     @Column(name = "address", length = 250)
     private String address;

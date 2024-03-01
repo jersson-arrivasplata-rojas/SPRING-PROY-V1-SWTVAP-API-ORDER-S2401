@@ -4,9 +4,13 @@ import com.jersson.arrivasplata.swtvap.api.order.business.service.OrderAmountSer
 import com.jersson.arrivasplata.swtvap.api.order.exception.CustomException;
 import com.jersson.arrivasplata.swtvap.api.order.model.OrderAmount;
 import com.jersson.arrivasplata.swtvap.api.order.repository.OrderAmountRepository;
+import com.jersson.arrivasplata.swtvap.api.order.util.Common;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.Optional;
+
 @Service
 public class OrderAmountServiceImpl implements OrderAmountService {
     private final OrderAmountRepository orderAmountRepository;
@@ -41,7 +45,15 @@ public class OrderAmountServiceImpl implements OrderAmountService {
 
     @Override
     public Mono<Void> deleteOrderAmount(Long id) {
-        orderAmountRepository.deleteById(id);
+
+        Optional<OrderAmount> orderAmountOptional = orderAmountRepository.findById(id);
+        if (!orderAmountOptional.isPresent()) {
+            throw new CustomException("OrderAmount not found with id: " + id);
+        }
+        OrderAmount orderAmount = orderAmountOptional.get();
+        orderAmount.setDeletedAt(Common.builder().build().getCurrentDate());
+        orderAmountRepository.save(orderAmount);
+
         return Mono.empty();
     }
 

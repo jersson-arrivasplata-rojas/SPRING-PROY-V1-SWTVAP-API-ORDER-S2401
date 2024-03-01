@@ -1,9 +1,11 @@
 package com.jersson.arrivasplata.swtvap.api.order.business.implementation;
 
 import com.jersson.arrivasplata.swtvap.api.order.business.service.OrderDetailService;
+import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
 import com.jersson.arrivasplata.swtvap.api.order.exception.CustomException;
 import com.jersson.arrivasplata.swtvap.api.order.model.OrderDetail;
 import com.jersson.arrivasplata.swtvap.api.order.repository.OrderDetailRepository;
+import com.jersson.arrivasplata.swtvap.api.order.util.Common;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -47,11 +49,16 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
     @Override
     public Mono<Void> deleteById(Long id) {
-        Optional<OrderDetail> orderDetail = orderDetailRepository.findById(id);
-        if (!orderDetail.isPresent()) {
+
+        Optional<OrderDetail> orderDetailOptional = orderDetailRepository.findById(id);
+        if (!orderDetailOptional.isPresent()) {
             throw new CustomException("OrderDetail not found with id: " + id);
         }
-        orderDetailRepository.deleteById(id);
+        OrderDetail orderDetail = orderDetailOptional.get();
+        orderDetail.setStatus(Status.INACTIVE);
+        orderDetail.setDeletedAt(Common.builder().build().getCurrentDate());
+        orderDetailRepository.save(orderDetail);
+
         return Mono.empty();
     }
 

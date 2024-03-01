@@ -1,12 +1,11 @@
 package com.jersson.arrivasplata.swtvap.api.order.business.implementation;
 
 import com.jersson.arrivasplata.swtvap.api.order.business.service.OrderService;
-import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
+import com.jersson.arrivasplata.swtvap.api.order.enums.OrderStatus;
 import com.jersson.arrivasplata.swtvap.api.order.exception.CustomException;
 import com.jersson.arrivasplata.swtvap.api.order.model.Order;
-import com.jersson.arrivasplata.swtvap.api.order.model.OrderRequest;
-import com.jersson.arrivasplata.swtvap.api.order.model.OrderResponse;
 import com.jersson.arrivasplata.swtvap.api.order.repository.OrderRepository;
+import com.jersson.arrivasplata.swtvap.api.order.util.Common;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -58,12 +57,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Mono<Void> deleteOrderById(Long id) {
+
         Optional<Order> orderOptional = orderRepository.findById(id);
         if (!orderOptional.isPresent()) {
             throw new CustomException("Order not found with id: " + id);
         }
         Order order = orderOptional.get();
-        order.setStatus(Status.INACTIVE);
+        order.setStatus(OrderStatus.CANCELED_BY_COMPANY);
+        order.setDeletedAt(Common.builder().build().getCurrentDate());
         orderRepository.save(order);
 
         return Mono.empty();

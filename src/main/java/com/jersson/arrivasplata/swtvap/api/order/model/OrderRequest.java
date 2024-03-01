@@ -1,6 +1,6 @@
 package com.jersson.arrivasplata.swtvap.api.order.model;
 
-import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
+import com.jersson.arrivasplata.swtvap.api.order.enums.OrderStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,7 +12,7 @@ public class OrderRequest {
     private Long clientId;
     private String code;
     private String orderDate;
-    private Status status;
+    private OrderStatus status;
     private String address;
     private BigDecimal subtotal;
     private BigDecimal subtotalUSD;
