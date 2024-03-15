@@ -52,6 +52,9 @@ public class OrderDetail {
     @Column(columnDefinition = "TEXT")
     private String otherDetails;
 
+    @Column(name = "otherDetails_en", columnDefinition = "TEXT")
+    private String otherDetails_en;
+
     @Enumerated(EnumType.ORDINAL)
     private Status status;
 

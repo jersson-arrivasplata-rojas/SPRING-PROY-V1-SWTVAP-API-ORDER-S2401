@@ -19,6 +19,7 @@ public class OrderDetailRequest {
     private BigDecimal subtotalEUR;
     private Long discountPercentage;
     private String otherDetails;
+    private String otherDetails_en;
     private Status status;
     private LocalDate deletedAt;
     private Order order;
